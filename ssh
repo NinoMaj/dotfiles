@@ -1,0 +1,8 @@
+Gen key:
+ssh-keygen -t rsa -C 'your@email.com'
+
+pbcopy < ~/.ssh/id_rsa.pub
+ssh my_username@myhost.host
+cd ~/.ssh
+vim authorized_keys
+  [ paste your key at the end of the file `]
