@@ -9,8 +9,8 @@ if [ -f "$HOME/.bash_secrets" ]; then
 fi
 
 # setup all of the aliases, functions, etc.
-if [ -d "$HOME/dotfiles" ]; then
-	for f in ~/dotfiles/*.sh; do source "$f"; done
+if [ -d "$HOME/Projects/dotfiles" ]; then
+	for f in ~/Projects/dotfiles/*.sh; do source "$f"; done
 fi
 
 parse_git_branch() {

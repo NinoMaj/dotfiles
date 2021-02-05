@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/nino/.oh-my-zsh"
@@ -26,8 +26,14 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -62,9 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,9 +89,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -96,13 +97,42 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # setup all of the aliases, functions, etc.
-if [ -d "$HOME/dotfiles" ]; then
-        for f in ~/dotfiles/*.sh; do source "$f"; done
+if [ -d "$HOME/Developer/dotfiles" ]; then
+	for f in ~/Developer/dotfiles/*.sh; do source "$f"; done
 fi
 
-# My custom
+# nvm
+#  export NVM_DIR=~/.nvm
+#  source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/opt/homebrew/opt/nvm/nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export NODE_OPTIONS=--max_old_space_size=5000
+
+# rv
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Projects/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# Rust
+source "$HOME/.cargo/env"
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export NVM_DIR="/Users/nino/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/nino/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nino/google-cloud-sdk/path.zsh.inc'; fi
+
+# Homebrew
+alias brow='arch --x86_64 /usr/local/Homebrew/bin/brew'
+path=('/opt/homebrew/bin' $path)
+export PATH
+# export PATH=/opts/homebrew/app/bin:$PATH
+
+# The next line enables shell command completion for gcloud.
+# if [ -f '/Users/nino/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nino/google-cloud-sdk/completion.zsh.inc'; fi
